@@ -4,9 +4,7 @@ namespace GreyWizard.Assertion;
 
 public class Story : IStory
 {
-    private readonly string Narration;
+    public string Narration { get; private set; }
 
-    public Story(string? narration) => Narration = narration ?? "Something went wrong...";
-
-    public string WriteDownTheWords() => Narration;
+    public Story(string narration) => Narration = narration;
 }

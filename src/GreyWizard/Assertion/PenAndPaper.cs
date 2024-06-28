@@ -4,5 +4,5 @@ namespace GreyWizard.Assertion;
 
 public class PenAndPaper : IPenAndPaper
 {
-    public IStory WriteNewStory(string? message) => new Story(message);
+    public IStory WriteNewStory(string narration) => new Story(narration);
 }

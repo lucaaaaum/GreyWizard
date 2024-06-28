@@ -19,29 +19,29 @@ public class WizardTest
     [Test]
     public void WriteOneStory()
     {
-        var message = "Two plus two must be five (we live in a society)";
-        _wizard.YouShallNotPass(2 + 2 == 5, message);
+        var narration = "Two plus two must be five (we live in a society)";
+        _wizard.YouShallNotPass(2 + 2 == 5, narration);
         Assert.That(_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 1);
-        Assert.That(_wizard.TellStories().All(x => x.WriteDownTheWords() == message));
+        Assert.That(_wizard.TellStories().All(x => x.Narration == narration));
     }
 
     [Test]
     public void WriteMultipleStories()
     {
-        var message = "Dumb assertion lol";
+        var narration = "Dumb assertion lol";
         for (var i = 0; i < 10; i++)
-            _wizard.YouShallNotPass(i == -1, message);
+            _wizard.YouShallNotPass(i == -1, narration);
         Assert.That(_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 10);
-        Assert.That(_wizard.TellStories().All(x => x.WriteDownTheWords() == message));
+        Assert.That(_wizard.TellStories().All(x => x.Narration == narration));
     }
 
     [Test]
     public void WriteNoStory()
     {
-        var message = "This message won't be used";
-        _wizard.YouShallNotPass(1 == 1, message);
+        var narration = "This narration won't be used";
+        _wizard.YouShallNotPass(1 == 1, narration);
         Assert.That(!_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 0);
     }
@@ -49,12 +49,12 @@ public class WizardTest
     [Test]
     public void WriteOneStoryAndPassTheOtherAssertion()
     {
-        var message = "I'm getting tired of writing these";
-        _wizard.YouShallNotPass(1 == 2, message);
-        _wizard.YouShallNotPass(1 == 1, message);
+        var narration = "I'm getting tired of writing these";
+        _wizard.YouShallNotPass(1 == 2, narration);
+        _wizard.YouShallNotPass(1 == 1, narration);
         Assert.That(_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 1);  
-        Assert.That(_wizard.TellStories().All(x => x.WriteDownTheWords() == message));
+        Assert.That(_wizard.TellStories().All(x => x.Narration == narration));
     }
 
     [Test]
@@ -63,7 +63,7 @@ public class WizardTest
         _wizard.YouShallNotPass(false);
         Assert.That(_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 1);
-        Assert.That(_wizard.TellStories().All(x => x.WriteDownTheWords() == "Something went wrong..."));
+        Assert.That(_wizard.TellStories().All(x => x.Narration == "Something went wrong..."));
     }
 
     [Test]
@@ -72,11 +72,11 @@ public class WizardTest
     [Test]
     public void ForgetStories()
     {
-        var message = "I swear it's the last one";
-        _wizard.YouShallNotPass(false, message);
+        var narration = "I swear it's the last one";
+        _wizard.YouShallNotPass(false, narration);
         Assert.That(_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 1);
-        Assert.That(_wizard.TellStories().All(x => x.WriteDownTheWords() == message));
+        Assert.That(_wizard.TellStories().All(x => x.Narration == narration));
         _wizard.ForgetMyStories();
         Assert.That(!_wizard.HasStoriesToTell());
         Assert.That(_wizard.TellStories().Count == 0);
