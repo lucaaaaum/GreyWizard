@@ -11,14 +11,14 @@ public class Wizard : IWizard
 
     public Wizard(IPenAndPaper penAndPaper) => this.penAndPaper = penAndPaper;
     
-    public void YouShallNotPass(bool conditionToPass, string? message)
+    public void YouShallNotPass(bool conditionToPass, string? message = default)
     {
         if (conditionToPass)
             return;
         _stories.Add(penAndPaper.WriteNewStory(message));
     }
     
-    public void ThrowHimIntoTheAbyss(bool conditionToNotThrowMyselfIntoTheAbyss, string? message)
+    public void ThrowHimIntoTheAbyss(bool conditionToNotThrowMyselfIntoTheAbyss, string? message = default)
     {
         if (conditionToNotThrowMyselfIntoTheAbyss)
             return;
