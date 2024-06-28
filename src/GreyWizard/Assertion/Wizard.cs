@@ -9,6 +9,9 @@ public class Wizard : IWizard
     private readonly IPenAndPaper penAndPaper;
     private readonly List<IStory> _stories = [];
 
+    public IReadOnlyCollection<IStory> Stories => new ReadOnlyCollection<IStory>(_stories);
+    public bool HasStoriesToTell => _stories.Any(); 
+
     public Wizard(IPenAndPaper penAndPaper) => this.penAndPaper = penAndPaper;
 
     public void YouShallNotPass(bool conditionToPass, string? narration = default)
@@ -27,10 +30,6 @@ public class Wizard : IWizard
         else
             throw new WizardThrownIntoTheAbyssException(narration);
     }
-
-    public bool HasStoriesToTell() => _stories.Any();
-
-    public IReadOnlyCollection<IStory> TellStories() => new ReadOnlyCollection<IStory>(_stories);
 
     public void ForgetMyStories() => _stories.Clear();
 }
