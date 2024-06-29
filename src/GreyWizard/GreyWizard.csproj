@@ -4,6 +4,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PackageId>GreyWizard</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Lucas Renato</Authors>
+    <Description>A .NET lib for assertions over code state. Terms based on Tolkien. You shall not pass!</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/lucaaaaum/GreyWizard</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
